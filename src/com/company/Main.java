@@ -25,14 +25,16 @@ public class Main {
             if (!file.exists()) {
                 throw new FileNotFoundException();
             }
-
-            BufferedReader br = new BufferedReader(new FileReader(file));
+            FileReader fileReader = new FileReader(file);
+            BufferedReader br = new BufferedReader( fileReader);
             String line;
             while ((line = br.readLine()) != null) {
               numbers.add(Integer.parseInt(line));
                 System.out.println(line);
             }
             br.close();
+            fileReader.close();
+
         } catch (Exception e) {
             System.err.println("Fie không tồn tại or nội dung có lỗi!");
         }
@@ -52,7 +54,7 @@ public class Main {
     }
     public static void newFile(int max){
         try {
-            FileOutputStream fileMax = new FileOutputStream("C:\\Users\\ADMIN\\Documents\\Codegym\\MD2\\md2-w2\\IO-TextInFile\\abc.txt");
+            FileOutputStream fileMax = new FileOutputStream("C:\\Users\\ADMIN\\Documents\\Codegym\\MD2\\md2-w2\\IO-TextInFile\\abc1.txt");
             OutputStreamWriter our = new OutputStreamWriter(fileMax);
             BufferedWriter br = new BufferedWriter(our);
             String ghi= "max la "+max;
